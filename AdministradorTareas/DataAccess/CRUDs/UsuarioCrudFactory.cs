@@ -59,7 +59,35 @@ namespace DataAccess.CRUDs
 
             return null;
         }
+        public Usuarios RetrieveByCorreo(Usuarios usuario)
+        {
+            var sqlOperation = new SqlOperation() { ProcedureName = "MOSTRAR_USUARIO_POR_CORREO" };
+            sqlOperation.AddVarcharParam("correo", usuario.correo);
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+            if (lstResults.Count > 0)
+            {
+                var row = lstResults[0];
+                var usuarios = BuildUsuario(row);
+                return usuarios;
+            }
 
+            return null;
+        }
+        public Usuarios VerificarCredenciales(Usuarios usuario)
+        {
+            var sqlOperation = new SqlOperation() { ProcedureName = "MOSTRAR_USUARIO_POR_CORREO_Y_CONTRASENA" };
+            sqlOperation.AddVarcharParam("correo", usuario.correo);
+            sqlOperation.AddVarcharParam("contrasenna", usuario.contrasenna);
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+            if (lstResults.Count > 0)
+            {
+                var row = lstResults[0];
+                var usuarios = BuildUsuario(row);
+                return usuarios;
+            }
+
+            return null;
+        }
         public override List<T> RetrieveById<T>()
         {
             throw new NotImplementedException();

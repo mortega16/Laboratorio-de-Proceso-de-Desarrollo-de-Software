@@ -34,7 +34,29 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-       
+
+        [HttpGet]
+        [Route("VerificarCredenciales")]
+        public ActionResult VerificarCredenciales(string correo, string contrasenna)
+        {
+            try
+            {
+                var u = new Usuarios { correo = correo ,  contrasenna=contrasenna };
+
+                var um = new UsuarioManager();
+                var usuario = um.VerificarCrendenciales(u);
+
+
+
+                return Ok(usuario);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("Create")]
 
@@ -52,6 +74,27 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
+        [HttpPut]
+        [Route("Update")]
+
+        public ActionResult Update(Usuarios usuario)
+        {
+            try
+            {
+                var um = new UsuarioManager();
+                um.Update(usuario);
+                return Ok(usuario);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
 
     }
 }
