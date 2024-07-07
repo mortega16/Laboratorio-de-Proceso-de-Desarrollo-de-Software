@@ -24,6 +24,8 @@ namespace WebAPI.Controllers
                 var um = new UsuarioManager();
                 var usuario = um.RetrieveByCedula(u);
 
+
+
                 return Ok(usuario);
 
             }
