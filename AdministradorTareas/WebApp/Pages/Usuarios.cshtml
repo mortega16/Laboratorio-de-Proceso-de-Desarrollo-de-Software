@@ -1,0 +1,40 @@
+﻿@page
+@model WebApp.Pages.UsuariosModel
+@{
+}
+<script src="~/js/pages/usuarios.js"></script>
+<form>
+    <fieldset>
+        <legend>Registro</legend>
+        <div>
+            <label for="idUsuario" class="form-label mt-4">Cedula</label>
+            <input type="text" class="form-control" id="cedulaUsuario" placeholder="Ingrese cedula">
+        </div>
+        <div>
+            <label for="nombreUsuario" class="form-label mt-4">Nombre</label>
+            <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingrese nombre">
+        </div>
+        <div>
+            <label for="apellido1Usuario" class="form-label mt-4">Primer apellido</label>
+            <input type="text" class="form-control" id="apellido1Usuario" placeholder="Ingrese primer apellido">
+        </div>
+
+       <div>
+            <label for="apellido2Usuario" class="form-label mt-4">Segundo apellido</label>
+            <input type="text" class="form-control" id="apellido2Usuario" placeholder="Ingrese segundo apellido">
+       </div>
+        <div>
+            <label for="exampleInputEmail1" class="form-label mt-4">Correo electrónico</label>
+            <input type="email" class="form-control" id="correoUsuario" aria-describedby="emailHelp" placeholder="Ingrese correo">
+        </div>
+        <div>
+            <label for="exampleInputPassword1" class="form-label mt-4">Contraseña</label>
+            <input type="password" class="form-control" id="usuarioContraseña" placeholder="Ingrese contraseña" autocomplete="off">
+        </div>
+        <br />
+        <div>
+            <button id="btnRegistrar" type="button" class="btn btn-outline-dark">Registrarse</button>
+        </div>
+
+    </fieldset>
+</form>
