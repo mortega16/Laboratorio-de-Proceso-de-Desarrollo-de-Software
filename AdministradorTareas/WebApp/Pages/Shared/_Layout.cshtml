@@ -8,52 +8,49 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
     <script src="~/js/controlactions.js"></script>
-
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a style="color:aliceblue" class="navbar-brand" href="#">SISTASK</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarColor01">
-                    <ul class="navbar-nav me-auto">
-
-                        <li class="nav-item" id="inicioSesion">
-                            <a class="nav-link" asp-area="" asp-page="/InicioSesion">Iniciar sesion</a>
-                        </li>
-                        <li class="nav-item" id="usuario">
-                            <a class="nav-link" asp-area="" asp-page="/Usuarios">Usuarios</a>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" style="color: WHITE" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-user fa-lg" style="color: WHITE;"></i>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="https://localhost:7103/InicioSesion">Iniciar sesión</a>
+                                <a class="dropdown-item" href="https://localhost:7103/Usuarios">Registrarse</a>
+                                <a class="dropdown-item" href="https://localhost:7103/Index">Cerrar sesión</a>
+                            </div>
                         </li>
                     </ul>
-                   
                 </div>
             </div>
         </nav>
-
     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - WebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
-
-
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
