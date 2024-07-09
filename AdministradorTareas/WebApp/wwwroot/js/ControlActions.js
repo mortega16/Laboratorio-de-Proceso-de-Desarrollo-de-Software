@@ -95,7 +95,7 @@
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
-					html: message,
+
 					
 				})
 			}
@@ -125,7 +125,7 @@
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
-					html: message,
+
 				})
 			})
 	};
@@ -150,7 +150,7 @@
 				Swal.fire({
 					icon: 'error',
 					title: 'Oops...',
-					html: message,
+
 				})
 			})
 	};

@@ -1,12 +1,56 @@
-﻿function UsuarioController() {
+﻿
+window.onload = function () {
+
+
+
+    document.getElementById("btnCerrarSesion").addEventListener("click", function () {
+        localStorage.removeItem("cedula", usuario.id);
+        localStorage.removeItem("correo", usuario.correo);
+        localStorage.removeItem("nombre", usuario.nombre);
+        localStorage.removeItem("apellido1", usuario.apellido1);
+        localStorage.removeItem("apellido2", usuario.apellido2);
+        localStorage.removeItem("contraseña", usuario.contraseña);
+
+        console.log("Sesión cerrada. rol eliminado del localStorage.");
+    });
+
+
+    const userData = localStorage.getItem('userData');
+    const userInfoElement = document.getElementById('userInfo');
+
+    if (userData) {
+        const userDataObj = JSON.parse(userData);
+        userInfoElement.innerHTML = `
+                    <p>Cedula: ${userDataObj.cedula}</p>
+                    <p>Nombre: ${userDataObj.nombre} ${userDataObj.apellido1} ${userDataObj.apellido2}</p>
+                    <p>Correo: ${userDataObj.correo}</p>
+                `;
+    }
+
+}
+
+const userData = {
+
+    cedula:localStorage.getItem("cedula"),
+    correo:localStorage.getItem("correo"),
+    nombre: localStorage.getItem("nombre"),
+    apellido1: localStorage.getItem("apellido1"),
+    apellido2: localStorage.getItem("apellido2"),
+
+    
+};
+
+
+
+
+localStorage.setItem('userData', JSON.stringify(userData));
+function UsuarioController() {
     this.ViewName = "Usuarios";
     this.ApiService = "Usuario";
 
-    //Metodo a ejecutar al incio de la vista
     this.InitView = function () {
         console.log("User view init!!");
 
-        //Bind del click de boton create con la funcion correpondiente
 
         $("#btnRegistrar").click(function () {
             var vc = new UsuarioController();
@@ -56,12 +100,19 @@
             success: function (usuario) {
                 console.log(usuario)
 
+                localStorage.setItem("cedula", usuario.id);
+                localStorage.setItem("correo", usuario.correo);
+                localStorage.setItem("nombre", usuario.nombre);
+                localStorage.setItem("apellido1", usuario.apellido1);
+                localStorage.setItem("apellido2", usuario.apellido2);
+                localStorage.setItem("contraseña", usuario.contraseña);
+
                 Swal.fire(
                     'Se ha iniciado sesion correctamente!',
 
                 )
                 setTimeout(function () {
-                    window.location.href = "https://localhost:7103/";
+                    window.location.href = "https://localhost:7103/Tareas";
                 }, 2000);
 
             },

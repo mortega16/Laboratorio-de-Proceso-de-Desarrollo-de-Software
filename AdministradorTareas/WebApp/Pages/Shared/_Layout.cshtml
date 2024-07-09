@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
-
+    <script src="~/js/pages/usuarios.js"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -36,9 +36,10 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
+                                <div class="dropdown-item" id="userInfo">44</div>
                                 <a class="dropdown-item" href="https://localhost:7103/InicioSesion">Iniciar sesión</a>
                                 <a class="dropdown-item" href="https://localhost:7103/Usuarios">Registrarse</a>
-                                <a class="dropdown-item" href="https://localhost:7103/Index">Cerrar sesión</a>
+                                <a class="dropdown-item" id="btnCerrarSesion" href="https://localhost:7103/Index">Cerrar sesión</a>
                             </div>
                         </li>
                     </ul>

@@ -36,7 +36,8 @@ function TareaController() {
    
     this.LoadTable = function () {
         var ca = new ControlActions();
-        var urlService = ca.GetUrlApiService(this.ApiService + "/RetrieveByUser?user=117487545");
+        cedula = localStorage.getItem("cedula");
+        var urlService = ca.GetUrlApiService(this.ApiService + "/RetrieveByUser?user=" + cedula);
 
         var columns = [];
         columns[0] = { "data": "titulo" }
@@ -76,7 +77,8 @@ function TareaController() {
     };
     this.Create = function () {
         var tarea = {};
-        tarea.usuarioId = 117487545;
+        cedula = localStorage.getItem("cedula");
+        tarea.usuarioId = cedula;
         tarea.titulo = $("#tareaTitulo").val();
         tarea.descripcion = $("#tareaDescripcion").val();
         tarea.prioridad = $("#tareaPrioridad").val();
@@ -93,7 +95,8 @@ function TareaController() {
     }
     this.Update = function () {
         var tarea = {};
-        tarea.usuarioId = 117487545;
+        cedula = localStorage.getItem("cedula");
+        tarea.usuarioId = cedula;
         tarea.titulo = $("#tareaTitulo").val();
         tarea.descripcion = $("#tareaDescripcion").val();
         tarea.prioridad = $("#tareaPrioridad").val();
