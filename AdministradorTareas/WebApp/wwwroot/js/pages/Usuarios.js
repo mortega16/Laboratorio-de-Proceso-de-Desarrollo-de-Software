@@ -4,12 +4,12 @@ window.onload = function () {
 
 
     document.getElementById("btnCerrarSesion").addEventListener("click", function () {
-        localStorage.removeItem("cedula", usuario.id);
-        localStorage.removeItem("correo", usuario.correo);
-        localStorage.removeItem("nombre", usuario.nombre);
-        localStorage.removeItem("apellido1", usuario.apellido1);
-        localStorage.removeItem("apellido2", usuario.apellido2);
-        localStorage.removeItem("contraseña", usuario.contraseña);
+        localStorage.removeItem("cedula");
+        localStorage.removeItem("correo");
+        localStorage.removeItem("nombre");
+        localStorage.removeItem("apellido1");
+        localStorage.removeItem("apellido2");
+        localStorage.removeItem("contraseña");
 
         console.log("Sesión cerrada. rol eliminado del localStorage.");
     });
@@ -64,6 +64,12 @@ function UsuarioController() {
             var vc = new UsuarioController();
             vc.InicioSesion();
         })
+        if (localStorage.getItem("cedula") == null) {
+
+            let userInfo = document.getElementById("userInfo");
+            userInfo.classList.add('displayNone');
+        }
+
 
 
     }
