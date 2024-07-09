@@ -43,7 +43,7 @@
     }
 
 
-    this.VerificarCrendenciales = function (correo,contrasenna) {
+    this.VerificarCrendenciales = function (correo, contrasenna,callback) {
 
         var ca = new ControlActions();
 
@@ -54,6 +54,8 @@
             url: urlService + "?correo=" + correo + "&contrasenna=" + contrasenna,
 
             success: function (usuario) {
+                console.log(usuario)
+
                 Swal.fire(
                     'Se ha iniciado sesion correctamente!',
 
