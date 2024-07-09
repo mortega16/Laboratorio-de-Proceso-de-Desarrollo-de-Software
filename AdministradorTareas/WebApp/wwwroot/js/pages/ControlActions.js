@@ -1,5 +1,7 @@
-﻿function ControlActions() {
-	this.URL_API = "https://localhost:7196/api/";
+
+function ControlActions() {
+	//Ruta base del API
+	this.URL_API = "https://localhost:7098/api/"; 
 
 	this.GetUrlApiService = function (service) {
 		return this.URL_API + service;
@@ -23,6 +25,8 @@
 				obj.data = value;
 				arrayColumnsData.push(obj);
 			});
+			//Esto es la inicializacion de la tabla de data tables segun la documentacion de 
+			// datatables.net, carga la data usando un request async al API
 			$('#' + tableId).DataTable({
 				"processing": true,
 				"ajax": {
@@ -32,10 +36,22 @@
 				"columns": arrayColumnsData
 			});
 		} else {
+			//RECARGA LA TABLA
 			$('#' + tableId).DataTable().ajax.reload();
 		}
 
 	}
+	this.PostToAPIWithFormData = function (serviceUrl, data, callback) {
+		$.ajax({
+			type: "POST",
+			url: serviceUrl,
+			data: data,
+			contentType: false, // No establecer Content-Type
+			processData: false, // No procesar datos
+			success: callback
+		});
+	}
+
 
 	this.GetSelectedRow = function () {
 		var data = sessionStorage.getItem(tableId + '_selected');
@@ -64,6 +80,7 @@
 	}
 
 
+	/* ACCIONES VIA AJAX, O ACCIONES ASINCRONAS*/
 
 	this.PostToAPI = function (service, data, callBackFunction) {
 
@@ -75,10 +92,15 @@
 			dataType: "json",
 			success: function (data) {
 				if (callBackFunction) {
-					Swal.fire(
-						'Se ha creado de forma correcta!',
-						
-					)
+					Swal.fire({
+						title: '<span class="nunito-title">Completado</span>',
+						html: 'Proceso Exitoso',
+						timer: 200000,
+						icon: 'success',
+						showCancelButton: false,
+						confirmButtonColor: "#4BBF73",
+						confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirecto">Ok</button>'
+						})
 					callBackFunction(data);
 				}
 			},
@@ -93,24 +115,32 @@
 					message = errorMessages.join("<br/> ");
 				}
 				Swal.fire({
+					title: '<span class="nunito-title">Error</span>',
+					html: 'Ha ocurrido un error',
+					timer: 200000,
 					icon: 'error',
-					title: 'Oops...',
-					html: message,
-					
+					showCancelButton: false,
+					confirmButtonColor: "#f27474",
+					confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirectoError">Ok</button>'
 				})
 			}
 		});
 	};
-
+	
 
 	this.PutToAPI = function (service, data, callBackFunction) {
 		var jqxhr = $.put(this.GetUrlApiService(service), data, function (response) {
 			var ctrlActions = new ControlActions();
 
-			Swal.fire(
-				'Se actualizo de forma correcta!',
-
-			)
+			Swal.fire({
+				title: '<span class="nunito-title">Completado</span>',
+				html: 'Proceso Exitoso',
+				timer: 200000,
+				icon: 'success',
+				showCancelButton: false,
+				confirmButtonColor: "#4BBF73",
+				confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirecto">Ok</button>'
+			})
 
 			if (callBackFunction) {
 				callBackFunction(response);
@@ -123,9 +153,13 @@
 				var errorMessages = Object.values(errors).flat();
 				message = errorMessages.join("<br/> ");
 				Swal.fire({
+					title: '<span class="nunito-title">Error</span>',
+					html: 'Ha ocurrido un error',
+					timer: 200000,
 					icon: 'error',
-					title: 'Oops...',
-					html: message,
+					showCancelButton: false,
+					confirmButtonColor: "#f27474",
+					confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirectoError">Ok</button>'
 				})
 			})
 	};
@@ -133,10 +167,15 @@
 	this.DeleteToAPI = function (service, data, callBackFunction) {
 		var jqxhr = $.delete(this.GetUrlApiService(service), data, function (response) {
 			var ctrlActions = new ControlActions();
-			Swal.fire(
-				'Se elimino de forma correcta!',
-
-			)
+			Swal.fire({
+				title: '<span class="nunito-title">Completado</span>',
+				html: 'Proceso Exitoso',
+				timer: 200000,
+				icon: 'success',
+				showCancelButton: false,
+				confirmButtonColor: "#4BBF73",
+				confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirecto">Ok</button>'
+			})
 
 			if (callBackFunction) {
 				callBackFunction(response);
@@ -148,9 +187,13 @@
 				var errorMessages = Object.values(errors).flat();
 				message = errorMessages.join("<br/> ");
 				Swal.fire({
+					title: '<span class="nunito-title">Error</span>',
+					html: 'Ha ocurrido un error',
+					timer: 200000,
 					icon: 'error',
-					title: 'Oops...',
-					html: message,
+					showCancelButton: false,
+					confirmButtonColor: "#f27474",
+					confirmButtonText: '<button class="cajaBtnGeneralUniversalbtnDirectoError">Ok</button>'
 				})
 			})
 	};
@@ -164,8 +207,31 @@
 
 		});
 	}
+	this.PostToAPIWithFormData = function (serviceUrl, data, callback) {
+		$.ajax({
+			type: "POST",
+			url: serviceUrl,
+			data: data,
+			contentType: false, // No establecer Content-Type
+			processData: false, // No procesar datos
+			success: callback
+		});
+	}
+
+	this.PutToAPIWithFormData = function (serviceUrl, data, callback) {
+		$.ajax({
+			type: "PUT",
+			url: serviceUrl,
+			data: data,
+			contentType: false, // No establecer Content-Type
+			processData: false, // No procesar datos
+			success: callback
+		});
+	}
+
 }
 
+//Custom jquery actions
 $.put = function (url, data, callback) {
 	if ($.isFunction(data)) {
 		type = type || callback,

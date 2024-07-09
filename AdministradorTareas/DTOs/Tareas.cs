@@ -15,6 +15,8 @@ namespace DTOs
         public string descripcion {  get; set; }    
         public string titulo { get; set; }
 
+        public string estado { get; set; }
+
 
     }
 }
