@@ -89,6 +89,9 @@ function UsuarioController() {
         var serviceRoute = this.ApiService + "/Create";
         ca.PostToAPI(serviceRoute, usuario, function () {
             console.log("Usuario creado-->" + JSON.stringify(usuario));
+            setTimeout(function () {
+                window.location.href = "https://localhost:7103/InicioSesion";
+            }, 2000);
         });
     }
 
