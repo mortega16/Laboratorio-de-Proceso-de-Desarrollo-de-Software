@@ -1,0 +1,26 @@
+﻿@page
+@model WebApp.Pages.InicioSesionModel
+@{
+}
+<script src="~/js/pages/usuarios.js"></script>
+
+<body>
+
+    <div class="row">
+        <div class="col-sm-6 cajaCorreoInicioSesion">
+            <label for="emailUsuario" class="form-label mt-4 letraBold margenSuperior0_5 etiquetaCorreoInicioSesion">Correo</label>
+            <input type="email" class="form-control fondoGris paddingLeft sinBorde inpCorreoInicioSesion" id="correoUsuario" aria-describedby="emailHelp">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 cajaContraInicioSesion">
+            <label for="contraseñaUsuario" class="form-label mt-4 letraBold margenSuperior0_5 etiquetaContraInicioSesion">Contraseña</label>
+            <input type="password" class="form-control fondoGris paddingLeft sinBorde inpContraInicioSesion" id="usuarioContraseña" autocomplete="off">
+        </div>
+    </div>
+    <br />
+    <div>
+        <button id="btnInicioSesion" type="button" class="btn btn-outline-dark">Iniciar sesion</button>
+    </div>
+
+</body>
