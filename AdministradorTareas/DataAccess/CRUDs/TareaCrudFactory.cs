@@ -24,6 +24,7 @@ namespace DataAccess.CRUDs
             SqlOperation.AddIntParam("prioridad", tarea.prioridad);
             SqlOperation.AddVarcharParam("descripcion", tarea.descripcion);
             SqlOperation.AddVarcharParam("titulo", tarea.titulo);
+            SqlOperation.AddVarcharParam("estado", tarea.estado);
 
             _dao.ExecuteProcedure(SqlOperation);
         }
@@ -93,6 +94,7 @@ namespace DataAccess.CRUDs
             SqlOperation.AddIntParam("prioridad", tarea.prioridad);
             SqlOperation.AddVarcharParam("descripcion", tarea.descripcion);
             SqlOperation.AddVarcharParam("titulo", tarea.titulo);
+            SqlOperation.AddVarcharParam("estado", tarea.estado);
 
             _dao.ExecuteProcedure(SqlOperation);
         }
@@ -107,6 +109,7 @@ namespace DataAccess.CRUDs
                 prioridad = (int)row["prioridad"],
                 vencimiento = (DateTime)row["vencimiento"],
                 usuarioId = (int)row["usuario"],
+                estado = (string)row["estado"]
             };
             return tareaToReturn;
         }

@@ -20,11 +20,77 @@
                         <th>Prioridad</th>
                         <th>Vencimiento</th>
                         <th>Numero de Tarea</th>
+                        <th>Estado</th>
+
                     </tr>
                 </thead>
             </table>
         </div>
     </div>
     <br />
+
+    <form>
+        <fieldset>
+
+            <div>
+                <label for="Id" class="form-label mt-4">Numero de tarea</label>
+                <input type="text" class="form-control" id="tareaId" placeholder="Ingrese numero de tarea" autocomplete="off">
+            </div>
+            <div>
+                <label for="titulo" class="form-label mt-4">Titulo</label>
+                <input type="text" class="form-control" id="tareaTitulo" placeholder="Ingrese el titulo de tarea" autocomplete="off">
+            </div>
+
+            <div>
+                <label for="descripcion" class="form-label mt-4">Descripcion</label>
+                <input type="text" class="form-control" id="tareaDescripcion" placeholder="Ingrese descripcion" autocomplete="off">
+            </div>
+         
+
+            <div>
+                <label for="prioridad" class="form-label mt-4">Prioridad</label>
+                <select class="form-select sinBorde fondoGris" placeholder="Ingrese la prioridad" id="tareaPrioridad">
+                    <option value="">Ingrese la prioridad</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+
+                </select>
+            </div>
+
+
+
+
+            <div>
+                <label for="Vencimiento" class="form-label mt-4">Vencimiento</label>
+                <input type="date" class="form-control" id="tareaVencimiento" placeholder="Ingrese la fecha de vencimiento" autocomplete="off">
+            </div>
+            <br />
+        
+
+            <div >
+                <label for="estado" class="form-label mt-4">Estado</label>
+                <select class="form-select sinBorde fondoGris" placeholder="Ingrese el estado" id="tareaEstado">
+                    <option value="">Ingrese el estado</option>
+                    <option value="Archivado">Archivado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Completado">Completado</option>
+                    <option value="Espera">Espera</option>
+
+                </select>
+            </div>
+
+
+
+            <br />
+            <div>
+                <button id="btnCrearTarea" type="button" class="btn btn-primary">Crear</button>
+                <button id="btnActualizarTarea" type="button" class="btn btn-primary">Actualizar</button>
+                <button id="btnEliminarTarea" type="button" class="btn btn-primary">Borrar</button>
+            </div>
+
+        </fieldset>
+    </form>
  
 </body>

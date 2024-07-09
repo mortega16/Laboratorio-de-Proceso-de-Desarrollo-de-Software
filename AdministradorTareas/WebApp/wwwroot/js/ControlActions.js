@@ -76,7 +76,7 @@
 			success: function (data) {
 				if (callBackFunction) {
 					Swal.fire(
-						'Correcto!',
+						'Se ha creado de forma correcta!',
 						
 					)
 					callBackFunction(data);
@@ -108,9 +108,8 @@
 			var ctrlActions = new ControlActions();
 
 			Swal.fire(
-				'Good job!',
-				'Transaction completed!',
-				'success'
+				'Se actualizo de forma correcta!',
+
 			)
 
 			if (callBackFunction) {
@@ -127,7 +126,6 @@
 					icon: 'error',
 					title: 'Oops...',
 					html: message,
-					footer: 'UCenfotec'
 				})
 			})
 	};
@@ -136,9 +134,8 @@
 		var jqxhr = $.delete(this.GetUrlApiService(service), data, function (response) {
 			var ctrlActions = new ControlActions();
 			Swal.fire(
-				'Good job!',
-				'Transaction completed!',
-				'success'
+				'Se elimino de forma correcta!',
+
 			)
 
 			if (callBackFunction) {
@@ -154,7 +151,6 @@
 					icon: 'error',
 					title: 'Oops...',
 					html: message,
-					footer: 'UCenfotec'
 				})
 			})
 	};
